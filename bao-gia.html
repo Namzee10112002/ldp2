@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Báo Giá - Quang Khải</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        .navbar {
+            background: #fff;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .navbar-nav .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 10px 18px;
+            font-weight: 600;
+            color: rgb(3, 3, 106);
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        /* small devices >=576px */
+        @media (min-width: 576px) {
+            .navbar-nav .nav-link {
+                font-size: 16px;
+            }
+        }
+
+        /* medium devices >=768px */
+        @media (min-width: 768px) {
+            .navbar-nav .nav-link {
+                font-size: 10px;
+            }
+        }
+
+        /* large devices >=992px */
+        @media (min-width: 992px) {
+            .navbar-nav .nav-link {
+                font-size: 10px;
+            }
+        }
+
+        /* extra large >=1200px */
+        @media (min-width: 1200px) {
+            .navbar-nav .nav-link {
+                font-size: 12px;
+            }
+        }
+
+        /* xxl >=1400px */
+        @media (min-width: 1400px) {
+            .navbar-nav .nav-link {
+                font-size: 16px;
+            }
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: rgb(199, 77, 118);
+            color: #fff !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            background: rgb(199, 77, 118);
+            color: #fff !important;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        /* Search box */
+        .search-box input {
+            border: 1px solid #ccc;
+            padding-left: 15px;
+        }
+
+        .search-box button {
+            border-radius: 0 5px 5px 0;
+            border: 1px solid #ccc;
+            background: rgb(3, 3, 106);
+            color: #fff;
+            position: absolute;
+            right: 0px;
+        }
+
+        .search-box button:hover {
+            background: #c51162;
+        }
+
+        /* Banner */
+
+        .banner h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .banner p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            margin: 20px 0;
+            max-width: 90%;
+        }
+
+        .banner {
+            position: relative;
+            min-height: 80vh;
+            /* chiều cao khối */
+            background: url("data/images/banner.avif") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            /* căn giữa dọc */
+            justify-content: center;
+            /* căn giữa ngang */
+            text-align: center;
+            color: #fff;
+        }
+
+        .banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            /* overlay tối để chữ dễ đọc */
+        }
+
+        .banner .container {
+            position: relative;
+            z-index: 2;
+            /* đảm bảo chữ nằm trên overlay */
+        }
+
+        .btn-banner {
+            border: 5px solid rgb(176, 183, 186);
+            background: rgb(39, 138, 177);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-banner:hover {
+            border: 5px solid rgb(176, 183, 186);
+            background: rgb(3, 83, 114);
+            color: #fff;
+        }
+
+        .banner-list {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Banner text đẹp hơn */
+        .banner h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .banner p.lead {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0 auto 20px auto;
+            max-width: 800px;
+            color: #f1f1f1;
+        }
+
+        .banner-list li {
+            text-align: left;
+            margin: 6px auto;
+            max-width: 700px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        /* Footer đẹp hơn */
+        .footer {
+            background: rgb(3, 83, 114);
+            color: #ccc;
+            padding: 60px 0 30px;
+            font-size: 0.95rem;
+        }
+
+        .footer h5 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .footer-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ff9800;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Footer bottom */
+        .footer .small {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            margin-top: 30px;
+            color: #888;
+        }
+    </style>
+    <style>
+    .price-card { border: 2px solid #0d6efd; transition: 0.3s; border-radius: 12px; }
+    .price-card:hover { background: #0d6efd; color: #fff; transform: scale(1.03); }
+    .price-card:hover .btn { background: #fff; color: #0d6efd; }
+    h2,h3 { font-weight: 700; }
+    table th { white-space: nowrap; }
+  </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm d-flex justify-content-center"
+        style="padding: 0; ">
+        <div id="navbar-wrapper" class="container" style="padding: 0; justify-content: space-between;">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="#"><img height="100px" src="data/images/logo.png" alt=""></a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav" style="padding:auto">
+                <ul class="navbar-nav mx-auto text-center" style="height: 100%;">
+                    <li class="nav-item"><a class="nav-link" href="index.html">TRANG CHỦ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dich-vu-in-an.html">ĐỊCH VỤ IN ẤN</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dich-vu-quang-cao.html">DỊCH VỤ QUẢNG CÁO</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="bao-gia.html">BÁO GIÁ</a></li>
+                </ul>
+                <!-- Search -->
+                <form class="d-flex search-box">
+                    <input class="form-control" type="search" placeholder="Tìm kiếm...">
+                    <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+ <div class="container py-5">
+  <h2 class="text-center mb-5">BÁO GIÁ DỊCH VỤ</h2>
+
+  <!-- Báo giá in ấn -->
+  <section class="mb-5">
+    <h3>Báo giá In Ấn</h3>
+    <p class="text-muted">Giá dưới đây chỉ mang tính chất tham khảo. Tùy số lượng, chất liệu giấy, kỹ thuật gia công mà giá có thể thay đổi. Liên hệ với IN ẤN & QUẢNG CÁO QUANG KHẢI để nhận báo giá chính xác trong vòng 15 phút.</p>
+
+    <h5 class="mt-4">Báo giá in tờ rơi (Flyer)</h5>
+    <table class="table table-bordered table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th>Quy cách in</th><th>Kích thước</th><th>Số lượng</th><th>Giấy in</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>In 2 mặt, cán bóng</td><td>A5 (14,8 x 21cm)</td><td>1.000 tờ</td><td>Couche 150gsm</td></tr>
+        <tr><td>In 2 mặt</td><td>A4 (21 x 29,7cm)</td><td>1.000 tờ</td><td>Couche 150gsm</td></tr>
+        <tr><td>In 1 mặt</td><td>A5</td><td>500 tờ</td><td>Kraft 150gsm</td></tr>
+      </tbody>
+    </table>
+    <p><b>Gia công thêm:</b> Cấn gấp 100đ/tờ, Ép nhũ từ 200đ/tờ.</p>
+
+    <h5 class="mt-4">Báo giá in catalogue / brochure</h5>
+    <table class="table table-bordered table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th>Quy cách</th><th>Kích thước</th><th>Số lượng</th><th>Chất liệu giấy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Catalogue 16 trang, đóng ghim</td><td>A4</td><td>100 cuốn</td><td>Ruột: Couche 150gsm / Bìa: 250gsm</td></tr>
+        <tr><td>Catalogue 32 trang, gáy keo</td><td>A5</td><td>200 cuốn</td><td>Ruột: Couche 150gsm / Bìa: 300gsm</td></tr>
+        <tr><td>Brochure gấp 3</td><td>21 x 29,7cm (mở A4, gấp DL)</td><td>500 tờ</td><td>Couche 150gsm</td></tr>
+      </tbody>
+    </table>
+    <p><b>Gia công thêm:</b> Cán mờ/bóng 500đ/tờ, Ép plastic 1.500đ/tờ.</p>
+
+    <h5 class="mt-4">Báo giá in name card / business card</h5>
+    <table class="table table-bordered table-striped">
+      <thead class="table-primary">
+        <tr><th>Quy cách</th><th>Số lượng</th><th>Chất liệu giấy</th><th>Gia công</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>In 2 mặt 4 màu</td><td>100 tấm</td><td>Couche 300gsm</td><td>Cán mờ</td></tr>
+        <tr><td>In 2 mặt</td><td>200 tấm</td><td>Couche 350gsm</td><td>Ép nhũ vàng</td></tr>
+        <tr><td>In 1 mặt</td><td>100 tấm</td><td>Giấy mỹ thuật (linen, ánh kim)</td><td>Không</td></tr>
+      </tbody>
+    </table>
+
+    <h5 class="mt-4">Báo giá in poster / banner</h5>
+    <table class="table table-bordered table-striped">
+      <thead class="table-primary">
+        <tr><th>Quy cách</th><th>Kích thước</th><th>Số lượng</th><th>Chất liệu</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Poster in màu</td><td>A2 (42 x 59,4cm)</td><td>50 tờ</td><td>Couche 150gsm</td></tr>
+        <tr><td>Banner treo ngoài trời</td><td>2m x 1m</td><td>10 cái</td><td>Hiflex</td></tr>
+        <tr><td>Poster hộp đèn</td><td>A1 (59,4 x 84,1cm)</td><td>20 tờ</td><td>Backlit Film</td></tr>
+      </tbody>
+    </table>
+    <p><b>Gia công thêm:</b> Bồi formex 5mm từ 50.000/tấm, Khoan khoen 5.000/khoen.</p>
+  </section>
+
+  <!-- Báo giá quảng cáo -->
+  <section class="mb-5">
+    <h3>Báo giá Quảng Cáo</h3>
+    <table class="table table-bordered table-striped">
+      <thead class="table-warning">
+        <tr><th>Dịch vụ</th><th>Quy cách</th><th>Vật liệu</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bảng hiệu Alu chữ nổi</td><td>3m x 1m</td><td>Alu + chữ mica phát sáng</td></tr>
+        <tr><td>Hộp đèn LED</td><td>1m x 2m</td><td>Mica + khung nhôm</td></tr>
+        <tr><td>Logo inox 3D</td><td>30cm – 80cm</td><td>Inox vàng/ trắng</td></tr>
+        <tr><td>In decal dán kính</td><td>Khổ A0 – khổ tùy chỉnh</td><td>PP, decal sữa</td></tr>
+        <tr><td>Backdrop sự kiện</td><td>3m x 5m</td><td>Bạt Hiflex</td></tr>
+      </tbody>
+    </table>
+    <p class="text-muted"><i>Báo giá liên hệ sẽ được cung cấp nhanh chóng sau khi khảo sát và tư vấn chi tiết.</i></p>
+  </section>
+
+  <!-- Ưu đãi -->
+  <section class="text-center mt-5">
+    <h3>Ưu đãi cho khách hàng</h3>
+    <p>✔ Giảm giá 5% cho đơn hàng từ 5.000 tờ rơi trở lên.<br>
+       ✔ Miễn phí thiết kế cho đơn hàng trên 3.000.000đ.<br>
+       ✔ Giao hàng miễn phí nội thành TP.HCM với đơn hàng từ 2.000.000đ.</p>
+    <a href="#" class="btn text-white btn-lg" style="background-color: rgb(3, 83, 114);">Liên hệ ngay để nhận báo giá chi tiết và ưu đãi mới nhất</a>
+  </section>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer text-white">
+        <div class="container">
+            <div class="row">
+                <!-- Info -->
+                <div class="col-md-6">
+                    <h5 class="fw-bold">Thông tin liên hệ</h5>
+                    <ul class="list-unstyled footer-list">
+                        <li>• CÔNG TY TNHH TM QUẢNG CÁO QUANG KHẢI</li>
+                        <li>• MST: 0317346938</li>
+                        <li>• Địa chỉ: 6/5 Đường 39, Khu phố 8, Phường Thủ Đức, TP Hồ Chí Minh, Việt Nam</li>
+                        <li>• Hotline/Zalo: 09xx xxx xxx</li>
+                        <li>• Email: lienhe@quangcaoquangkhai.com</li>
+                        <li>• Website: quangcaoquangkhai.com</li>
+                    </ul>
+                </div>
+                <!-- Quick nav -->
+                <div class="col-md-6 text-md-end mt-4 mt-md-0">
+                    <h5 class="fw-bold">Liên kết nhanh</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">TRANG CHỦ</a></li>
+                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="#">Báo giá</a></li>
+                        <li><a href="#">Kiến thức</a></li>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-white text-center mt-4 small">
+                © 2025 Quảng Cáo Quang Khải - All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+</body>
+
+</html>

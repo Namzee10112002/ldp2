@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dịch vụ Quảng Cáo - Quang Khải</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        .navbar {
+            background: #fff;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .navbar-nav .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 10px 18px;
+            font-weight: 600;
+            color: rgb(3, 3, 106);
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        /* small devices >=576px */
+        @media (min-width: 576px) {
+            .navbar-nav .nav-link {
+                font-size: 16px;
+            }
+        }
+
+        /* medium devices >=768px */
+        @media (min-width: 768px) {
+            .navbar-nav .nav-link {
+                font-size: 10px;
+            }
+        }
+
+        /* large devices >=992px */
+        @media (min-width: 992px) {
+            .navbar-nav .nav-link {
+                font-size: 10px;
+            }
+        }
+
+        /* extra large >=1200px */
+        @media (min-width: 1200px) {
+            .navbar-nav .nav-link {
+                font-size: 12px;
+            }
+        }
+
+        /* xxl >=1400px */
+        @media (min-width: 1400px) {
+            .navbar-nav .nav-link {
+                font-size: 16px;
+            }
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: rgb(199, 77, 118);
+            color: #fff !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            background: rgb(199, 77, 118);
+            color: #fff !important;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        /* Search box */
+        .search-box input {
+            border: 1px solid #ccc;
+            padding-left: 15px;
+        }
+
+        .search-box button {
+            border-radius: 0 5px 5px 0;
+            border: 1px solid #ccc;
+            background: rgb(3, 3, 106);
+            color: #fff;
+            position: absolute;
+            right: 0px;
+        }
+
+        .search-box button:hover {
+            background: #c51162;
+        }
+
+        /* Banner */
+
+        .banner h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .banner p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            margin: 20px 0;
+            max-width: 90%;
+        }
+
+        .banner {
+            position: relative;
+            min-height: 80vh;
+            /* chiều cao khối */
+            background: url("data/images/banner.avif") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            /* căn giữa dọc */
+            justify-content: center;
+            /* căn giữa ngang */
+            text-align: center;
+            color: #fff;
+        }
+
+        .banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            /* overlay tối để chữ dễ đọc */
+        }
+
+        .banner .container {
+            position: relative;
+            z-index: 2;
+            /* đảm bảo chữ nằm trên overlay */
+        }
+
+        .btn-banner {
+            border: 5px solid rgb(176, 183, 186);
+            background: rgb(39, 138, 177);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-banner:hover {
+            border: 5px solid rgb(176, 183, 186);
+            background: rgb(3, 83, 114);
+            color: #fff;
+        }
+
+        .banner-list {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Banner text đẹp hơn */
+        .banner h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .banner p.lead {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0 auto 20px auto;
+            max-width: 800px;
+            color: #f1f1f1;
+        }
+
+        .banner-list li {
+            text-align: left;
+            margin: 6px auto;
+            max-width: 700px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        /* Footer đẹp hơn */
+        .footer {
+            background: rgb(3, 83, 114);
+            color: #ccc;
+            padding: 60px 0 30px;
+            font-size: 0.95rem;
+        }
+
+        .footer h5 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .footer-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ff9800;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Footer bottom */
+        .footer .small {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            margin-top: 30px;
+            color: #888;
+        }
+    </style>
+    <style>
+    .service-card { transition: 0.3s; border-radius: 12px; overflow: hidden; width: 90%; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .service-card img {  height:300px;background: #f8f9fa; }
+    h2,h3 { font-weight: 700; }
+  </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm d-flex justify-content-center"
+        style="padding: 0; ">
+        <div id="navbar-wrapper" class="container" style="padding: 0; justify-content: space-between;">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold" href="#"><img height="100px" src="data/images/logo.png" alt=""></a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav" style="padding:auto">
+                <ul class="navbar-nav mx-auto text-center" style="height: 100%;">
+                    <li class="nav-item"><a class="nav-link" href="index.html">TRANG CHỦ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dich-vu-in-an.html">ĐỊCH VỤ IN ẤN</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="dich-vu-quang-cao.html">DỊCH VỤ QUẢNG CÁO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bao-gia.html">BÁO GIÁ</a></li>
+                </ul>
+                <!-- Search -->
+                <form class="d-flex search-box">
+                    <input class="form-control" type="search" placeholder="Tìm kiếm...">
+                    <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+<div class="container py-5">
+  <h2 class="text-center mb-5">DỊCH VỤ QUẢNG CÁO</h2>
+
+  <!-- Giới thiệu -->
+  <section class="mb-5">
+    <h3>Giới thiệu dịch vụ quảng cáo</h3>
+    <p>Ngoài in ấn chuyên nghiệp, <b>IN ẤN & QUẢNG CÁO QUANG KHẢI</b> còn cung cấp giải pháp quảng cáo toàn diện giúp doanh nghiệp nâng tầm thương hiệu.</p>
+    <p>Chúng tôi kết hợp giữa sáng tạo – công nghệ – thi công chuẩn kỹ thuật để mang đến những sản phẩm quảng cáo nổi bật, thu hút và hiệu quả.</p>
+  </section>
+
+  <!-- Điểm mạnh -->
+  <section class="mb-5">
+    <h3>Điểm mạnh của chúng tôi</h3>
+    <ul>
+      <li>Tư vấn ý tưởng quảng cáo phù hợp từng ngành hàng.</li>
+      <li>Đội ngũ thiết kế sáng tạo, cập nhật xu hướng mới.</li>
+      <li>Hệ thống máy móc & vật liệu chất lượng cao.</li>
+      <li>Thi công nhanh chóng, đúng tiến độ, bảo hành dài hạn.</li>
+    </ul>
+  </section>
+
+  <!-- Các dịch vụ -->
+  <div class="row g-4">
+    <!-- Bảng hiệu -->
+    <div class="col-md-6 d-flex justify-content-center mt-5">
+      <div class="card service-card h-100">
+        <img src="data/images/5.png" class="card-img-top" alt="Bảng hiệu quảng cáo">
+        <div class="card-body">
+          <h3 class="card-title">Thi công bảng hiệu – biển quảng cáo</h3>
+          <p><b>Loại hình:</b> Bảng hiệu Alu, bảng LED, hộp đèn, pano ngoài trời.</p>
+          <p><b>Vật liệu:</b> Alu, Inox, Mica, Hiflex, LED siêu sáng.</p>
+          <p><b>Ưu điểm:</b> Bền màu, chống nắng mưa, dễ bảo trì.</p>
+          <p><b>Ứng dụng:</b> Cửa hàng, showroom, công ty, quán cà phê, nhà hàng.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chữ nổi 3D -->
+    <div class="col-md-6 d-flex justify-content-center mt-5">
+      <div class="card service-card h-100">
+        <img src="data/images/6.png" class="card-img-top" alt="Chữ nổi - Logo 3D">
+        <div class="card-body">
+          <h3 class="card-title">Thi công chữ nổi – logo 3D</h3>
+          <p><b>Chất liệu:</b> Mica, Inox, Aluminium, LED nổi.</p>
+          <p><b>Quy cách:</b> Chữ nổi gắn tường, chữ phát sáng, logo cắt CNC.</p>
+          <p><b>Hiệu quả:</b> Tăng tính nhận diện thương hiệu, sang trọng, hiện đại.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- In & dán decal -->
+    <div class="col-md-6 d-flex justify-content-center mt-5">
+      <div class="card service-card h-100">
+        <img src="data/images/7.png" class="card-img-top" alt="Decal quảng cáo">
+        <div class="card-body">
+          <h3 class="card-title">In & dán decal quảng cáo</h3>
+          <p><b>Loại decal:</b> Decal PP, Decal trong suốt.</p>
+          <p><b>Ứng dụng:</b> Trang trí cửa hàng, nhận diện thương hiệu, quảng bá sản phẩm.</p>
+          <p><b>Lưu ý:</b> Decal in sắc nét, bám dính chắc, dễ thi công và thay đổi.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pano - backdrop -->
+    <div class="col-md-6 d-flex justify-content-center mt-5">
+      <div class="card service-card h-100">
+        <img src="data/images/8.png" class="card-img-top" alt="Backdrop sự kiện">
+        <div class="card-body">
+          <h3 class="card-title">Thi công pano, backdrop sự kiện</h3>
+          <p><b>Quy cách:</b> Pano khổ lớn ngoài trời, backdrop hội nghị, sân khấu.</p>
+          <p><b>Chất liệu:</b> Hiflex, PP, bạt 3M.</p>
+          <p><b>Ưu điểm:</b> Hiệu ứng truyền thông mạnh, dễ thu hút đám đông.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer text-white">
+        <div class="container">
+            <div class="row">
+                <!-- Info -->
+                <div class="col-md-6 d-flex justify-content-center mt-5">
+                    <h5 class="fw-bold">Thông tin liên hệ</h5>
+                    <ul class="list-unstyled footer-list">
+                        <li>• CÔNG TY TNHH TM QUẢNG CÁO QUANG KHẢI</li>
+                        <li>• MST: 0317346938</li>
+                        <li>• Địa chỉ: 6/5 Đường 39, Khu phố 8, Phường Thủ Đức, TP Hồ Chí Minh, Việt Nam</li>
+                        <li>• Hotline/Zalo: 09xx xxx xxx</li>
+                        <li>• Email: lienhe@quangcaoquangkhai.com</li>
+                        <li>• Website: quangcaoquangkhai.com</li>
+                    </ul>
+                </div>
+                <!-- Quick nav -->
+                <div class="col-md-6 d-flex justify-content-center mt-5 text-md-end mt-4 mt-md-0">
+                    <h5 class="fw-bold">Liên kết nhanh</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">TRANG CHỦ</a></li>
+                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="#">Báo giá</a></li>
+                        <li><a href="#">Kiến thức</a></li>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-white text-center mt-4 small">
+                © 2025 Quảng Cáo Quang Khải - All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+</body>
+
+</html>
